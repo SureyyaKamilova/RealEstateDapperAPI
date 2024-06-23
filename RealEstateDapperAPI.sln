@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateDapperAPI", "RealEstateDapperAPI\RealEstateDapperAPI.csproj", "{31E68BF3-2FE0-46BE-A765-680F7C446790}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateDapperUI", "RealEstateDapperUI\RealEstateDapperUI.csproj", "{7C6D9A98-0A2E-4AE0-8CA7-D9261EB41455}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31E68BF3-2FE0-46BE-A765-680F7C446790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31E68BF3-2FE0-46BE-A765-680F7C446790}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31E68BF3-2FE0-46BE-A765-680F7C446790}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31E68BF3-2FE0-46BE-A765-680F7C446790}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C6D9A98-0A2E-4AE0-8CA7-D9261EB41455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C6D9A98-0A2E-4AE0-8CA7-D9261EB41455}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C6D9A98-0A2E-4AE0-8CA7-D9261EB41455}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C6D9A98-0A2E-4AE0-8CA7-D9261EB41455}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F41A6E7-1AC6-4D5F-A688-65D0FFDCC3F9}
+	EndGlobalSection
+EndGlobal
