@@ -13,7 +13,7 @@ namespace RealEstateDapperAPI.Controllers
 
         public CategoriesController(ICategoryRepository categoryRepository)
         {
-            _categoryRepository= categoryRepository;
+            _categoryRepository = categoryRepository;
         }
 
         [HttpGet]
@@ -43,5 +43,13 @@ namespace RealEstateDapperAPI.Controllers
             _categoryRepository.UpdateCategory(categoryDto);
             return Ok("Category updated!");
         }
+
+        [HttpGet("{id}")]
+        public  async Task<IActionResult> GetCategory(int id)
+        {
+            var values =await _categoryRepository.GetCategory(id);
+            return Ok(values);
+        }
+
     }
 }
