@@ -15,6 +15,7 @@ builder.Services.AddTransient<Context>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<IWhoWeAreRepository, WhoWeAreRepository>();
+builder.Services.AddTransient<IServiceRepository, ServiceRepository>();
 
 
 var app = builder.Build();
