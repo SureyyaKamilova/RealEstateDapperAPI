@@ -1,4 +1,4 @@
-﻿namespace RealEstateDapperUI.DTOS.WhoWeAreDetailDto
+﻿namespace RealEstateDapperUI.DTOS.WhoWeAreDetailDtos
 {
     public class ResultWhoWeAreDetail
     {
