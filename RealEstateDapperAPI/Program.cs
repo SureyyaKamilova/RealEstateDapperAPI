@@ -20,6 +20,7 @@ builder.Services.AddTransient<IServiceRepository, ServiceRepository>();
 
 builder.Services.AddTransient<IBottomGridRepository, BottomGridRepository>();
 builder.Services.AddTransient<IPopularLocationRepository, PopularLocationRepository>();
+builder.Services.AddTransient<ITestimonialRepository, TestimonialRepository>();
 
 
 var app = builder.Build();
