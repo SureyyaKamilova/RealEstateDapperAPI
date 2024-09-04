@@ -7,7 +7,7 @@ namespace RealEstateDapperUI.Controllers
 {
     public class CategoryController(IHttpClientFactory httpClientFactory) : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory=httpClientFactory;
+        private readonly IHttpClientFactory _httpClientFactory = httpClientFactory;
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
@@ -44,6 +44,49 @@ namespace RealEstateDapperUI.Controllers
             }
 
             return View();
+        }
+
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync($"https://localhost:44364/api/Categories/{id}");
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateCategory(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"https://localhost:44364/api/Categories/{id}");
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<UpdateCategoryDto>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategory)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(updateCategory);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            var responseMessage = await client.PutAsync("https://localhost:44364/api/Categories/", stringContent);
+            if (responseMessage.IsSuccessStatusCode) 
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+
         }
     }
 }
