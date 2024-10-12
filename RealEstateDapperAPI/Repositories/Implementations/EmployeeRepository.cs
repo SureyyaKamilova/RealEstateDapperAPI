@@ -1,4 +1,6 @@
-﻿using RealEstateDapperAPI.DTOS.EmployeeDtos;
+﻿using Dapper;
+using RealEstateDapperAPI.DTOS.CatagoryDtos;
+using RealEstateDapperAPI.DTOS.EmployeeDtos;
 using RealEstateDapperAPI.Models.DapperContext;
 using RealEstateDapperAPI.Repositories.Interfaces;
 
@@ -12,24 +14,76 @@ namespace RealEstateDapperAPI.Repositories.Implementations
         {
             _context = context;
         }
-        public void CreateEmployee(CreateEmployeeDto employeeDto)
+        public async void CreateEmployee(CreateEmployeeDto employeeDto)
         {
-            throw new NotImplementedException();
+            string query = "Insert into Employee (EmployeeName,Title,Mail,PhoneNumber,ImageUrl, Status) values (@employeeName,@title,@mail,@phoneNumber,@imageUrl,@status)";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@employeeName", employeeDto.EmployeeName);
+            parameters.Add("@title", employeeDto.Title);
+            parameters.Add("@mail", employeeDto.Mail);
+            parameters.Add("@phoneNumber", employeeDto.PhoneNumber);
+            parameters.Add("@imageUrl", employeeDto.ImageUrl);
+            parameters.Add("@status", true);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
         }
 
-        public void DeleteEmployee(int id)
+        public async void DeleteEmployee(int id)
         {
-            throw new NotImplementedException();
+            string query = "Delete From Employee Where EmployeeId=@employeeId";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@employeeId", id);
+
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
         }
 
-        public Task<List<ResultEmployeeDto>> GetAllEmployeeAsync()
+        public async Task<List<ResultEmployeeDto>> GetAllEmployeeAsync()
         {
-            throw new NotImplementedException();
+            string query = "Select * From Employee";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultEmployeeDto>(query);
+
+                return values.ToList();
+            }
         }
 
-        public void UpdateEmployee(UpdateEmployeeDto employeeDto)
+        public async Task<GetByIdEmployeeDto> GetEmployee(int id)
         {
-            throw new NotImplementedException();
+            string query = "Select *From Employee Where EmployeeId=@employeeId";
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@employeeId", id);
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryFirstOrDefaultAsync<GetByIdEmployeeDto>(query, parameters);
+                return values;
+            }
+        }
+
+        public async void UpdateEmployee(UpdateEmployeeDto employeeDto)
+        {
+            string query = "Update Category Set EmployeeName=@employeeName,Title=@title,Mail=@mail,PhoneNumber=@phoneNumber,ImageUrl=@imageUrl, Status=@status Where EmployeeId=@employeeId";
+            var parameters = new DynamicParameters();
+            parameters.Add("@employeeName", employeeDto.EmployeeName);
+            parameters.Add("@title", employeeDto.Title);
+            parameters.Add("@mail", employeeDto.Mail);
+            parameters.Add("@phoneNumber", employeeDto.PhoneNumber);
+            parameters.Add("@imageUrl", employeeDto.ImageUrl);
+            parameters.Add("@status", true);
+
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
         }
     }
 }
