@@ -73,6 +73,7 @@ namespace RealEstateDapperAPI.Repositories.Implementations
         {
             string query = "Update Category Set EmployeeName=@employeeName,Title=@title,Mail=@mail,PhoneNumber=@phoneNumber,ImageUrl=@imageUrl, Status=@status Where EmployeeId=@employeeId";
             var parameters = new DynamicParameters();
+            parameters.Add("@employeeId", employeeDto.EmployeeId);
             parameters.Add("@employeeName", employeeDto.EmployeeName);
             parameters.Add("@title", employeeDto.Title);
             parameters.Add("@mail", employeeDto.Mail);
