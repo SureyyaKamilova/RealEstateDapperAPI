@@ -12,7 +12,7 @@ namespace RealEstateDapperUI.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44364/api/ServiceDetail");
+            var responseMessage = await client.GetAsync("https://localhost:44364/api/Service");
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -24,13 +24,13 @@ namespace RealEstateDapperUI.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult CreateServiceDetail()
+        public IActionResult CreateService()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateServiceDetail(CreateServiceDto serviceDto)
+        public async Task<IActionResult> CreateService(CreateServiceDto serviceDto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(serviceDto);
@@ -46,7 +46,7 @@ namespace RealEstateDapperUI.Controllers
             return View();
         }
 
-        public async Task<IActionResult> DeleteServiceDetail(int id)
+        public async Task<IActionResult> DeleteService(int id)
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.DeleteAsync($"https://localhost:44364/api/Service/{id}");
@@ -59,7 +59,7 @@ namespace RealEstateDapperUI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> UpdateServiceDetail(int id)
+        public async Task<IActionResult> UpdateService(int id)
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync($"https://localhost:44364/api/Service/{id}");
@@ -74,7 +74,7 @@ namespace RealEstateDapperUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateServiceDetail(UpdateServiceDto serviceDto)
+        public async Task<IActionResult> UpdateService(UpdateServiceDto serviceDto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(serviceDto);
