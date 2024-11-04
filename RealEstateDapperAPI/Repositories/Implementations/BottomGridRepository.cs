@@ -73,9 +73,9 @@ namespace RealEstateDapperAPI.Repositories.Implementations
             string query = "Update BottomGrid Set Icon=@icon,Title=@title,Description=@description Where BottomGridId=@bottomGridId";
             var parameters = new DynamicParameters();
             parameters.Add("@bottomGridId", bottomGridDto.BottomGridId);
-            parameters.Add("@serviceName", bottomGridDto.Icon);
-            parameters.Add("@serviceName", bottomGridDto.Title);
-            parameters.Add("@serviceName", bottomGridDto.Description);
+            parameters.Add("@icon", bottomGridDto.Icon);
+            parameters.Add("@title", bottomGridDto.Title);
+            parameters.Add("@description", bottomGridDto.Description);
 
             using (var connection = _context.CreateConnection())
             {

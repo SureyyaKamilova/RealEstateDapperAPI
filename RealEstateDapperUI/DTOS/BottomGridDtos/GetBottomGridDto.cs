@@ -1,4 +1,4 @@
-﻿namespace RealEstateDapperAPI.DTOS.BottomGridDtos
+﻿namespace RealEstateDapperUI.DTOS.BottomGridDtos
 {
     public class GetBottomGridDto
     {
