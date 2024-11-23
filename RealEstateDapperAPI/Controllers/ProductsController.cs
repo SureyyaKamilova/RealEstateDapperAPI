@@ -21,21 +21,21 @@ namespace RealEstateDapperAPI.Controllers
             return Ok(values);
         }
 
-        [HttpGet("ProductLisWithCategory")]
+        [HttpGet("ProductListWithCategory")]
         public async Task<IActionResult> ProductLisWithCategory()
         {
             var values = await _productRepository.GetAllProductWithCategoryAsync();
             return Ok(values);
         }
 
-        [HttpPut("ProductDealOfTheDayStatusChangeToFalse{id}")]
+        [HttpPut("ProductDealOfTheDayStatusChangeToFalse/{id}")]
         public async Task<IActionResult> ProductDealOfTheDayStatusChangeToFalse(int id)
         {
             _productRepository.ProductDealOfTheDayStatusChangeToFalse(id);
             return Ok("Product deleted deal of the day");
         }
 
-        [HttpPut("ProductDealOfTheDayStatusChangeToTrue{id}")]
+        [HttpPut("ProductDealOfTheDayStatusChangeToTrue/{id}")]
         public async Task<IActionResult> ProductDealOfTheDayStatusChangeToTrue(int id)
         {
             _productRepository.ProductDealOfTheDayStatusChangeToTrue(id);
