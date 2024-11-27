@@ -43,5 +43,11 @@ namespace RealEstateDapperAPI.Controllers
         }
 
 
+        [HttpGet("GetLastFiveProductAsync")]
+        public async Task<IActionResult> GetLastFiveProductAsync()
+        {
+            var values = await _productRepository.GetLastFiveProductAsync();
+            return Ok(values);
+        }
     }
 }
