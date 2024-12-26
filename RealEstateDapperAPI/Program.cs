@@ -26,6 +26,8 @@ builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddTransient<IStatisticsRepository, StatisticsRepository>();
 builder.Services.AddTransient<IContactRepository, ContactRepository>();
 
+builder.Services.AddTransient<IToDoListRepository, ToDoListRepository>();
+
 
 var app = builder.Build();
 
